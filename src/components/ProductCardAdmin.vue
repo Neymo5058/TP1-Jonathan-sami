@@ -1,19 +1,24 @@
 <template>
   <div class="card-admin">
+    <!-- Product image -->
     <img :src="imageUrl" :alt="product.name" class="card-admin__img" />
 
+    <!-- Info -->
     <div class="card-admin__info">
       <h3>{{ product.name }}</h3>
       <p>{{ product.price.toFixed(2) }}$</p>
       <p>{{ product.quantity }} Qty</p>
     </div>
 
+    <!-- Actions -->
     <div class="card-admin__actions">
-      <button @click="$emit('edit', product)">
-        <img :src="editIcon"  alt="Modifier"  class="card-admin__icon" />
+      <!-- Edit -->
+      <button @click="$emit('edit', product)" class="icon-btn">
+        <ion-icon name="create-outline" class="icon icon--edit"></ion-icon>
       </button>
-      <button @click="$emit('remove', product.id)">
-        <img :src="trashIcon" alt="Supprimer" class="card-admin__icon" />
+      <!-- Delete -->
+      <button @click="$emit('remove', product.id)" class="icon-btn">
+        <ion-icon name="trash-outline" class="icon icon--trash"></ion-icon>
       </button>
     </div>
   </div>
@@ -22,17 +27,16 @@
 <script setup>
 import { computed } from 'vue'
 
-// props & emits
 const props = defineProps({ product: Object })
 defineEmits(['edit','remove'])
 
-// import des icônes
-import editIcon  from '../assets/images/card-outline.svg'
-import trashIcon from '../assets/images/trash-outline.svg'
-
-// dynamique : URL de l’image produit
+// Glob-import product images as URLs
+const images = import.meta.glob(
+  '../assets/images/*.{jpg,jpeg,png,svg}',
+  { eager: true, query: '?url', import: 'default' }
+)
 const imageUrl = computed(() =>
-  new URL(`../assets/images/${props.product.image}`, import.meta.url).href
+  images[`../assets/images/${props.product.image}`] || ''
 )
 </script>
 
@@ -44,16 +48,22 @@ const imageUrl = computed(() =>
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+/* make sure your images fill the top area */
 .card-admin__img {
   width: 100%;
-  height: 160px;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
 }
+
 .card-admin__info {
   padding: 12px;
   text-align: center;
 }
+
 .card-admin__actions {
   display: flex;
   justify-content: center;
@@ -61,8 +71,27 @@ const imageUrl = computed(() =>
   padding: 8px;
   background: #fafafa;
 }
-.card-admin__icon {
-  width: 20px;
-  height: 20px;
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Base size for ion-icon */
+.icon {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+/* Edit icon in default blue */
+.icon--edit {
+  color: #2A4AEB;
+}
+
+/* Trash icon in exact red */
+.icon--trash {
+  color: #F03E3E;
 }
 </style>
