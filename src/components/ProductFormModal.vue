@@ -85,7 +85,7 @@ function onSubmit() {
   z-index: 1000;
 }
 .modal-window {
-  background: white;
+  background: #D9D9D9;
   border-radius: 6px;
   padding: 24px;
   width: 320px;
@@ -106,6 +106,7 @@ function onSubmit() {
   padding: 6px 8px;
   margin-top: 4px;
   box-sizing: border-box;
+  
 }
 .modal-actions {
   display: flex;
@@ -117,6 +118,6 @@ function onSubmit() {
   border-radius: 4px;
   cursor: pointer;
 }
-.btn--primary { background: #2A4AEB; color: white; }
-.btn--default { background: #e0e0e0; }
+.btn--primary { background: green; color: white; }
+.btn--default { background: rgb(235, 49, 3); color: white; }
 </style>

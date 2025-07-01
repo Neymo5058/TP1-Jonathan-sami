@@ -4,7 +4,7 @@
       <div class="container">
         <!-- Controls -->
         <div class="admin__controls">
-          <!-- New pill-shaped Search Bar -->
+          <!-- Search Bar -->
           <div class="search-bar">
             <div class="search-bar__icon">
               <ion-icon name="search-outline"></ion-icon>
@@ -31,7 +31,7 @@
         <!-- Title -->
         <h2 class="admin__title">Product List</h2>
 
-        <!-- Grid -->
+        <!-- Responsive Grid -->
         <div class="admin__grid">
           <ProductCardAdmin
             v-for="p in filtered"
@@ -74,25 +74,22 @@ const store = useProductStore()
 const search = ref('')
 const sortOption = ref('qtyAsc')
 
-// Modal state
 const showDelete = ref(false)
 const showForm = ref(false)
 const deletingId = ref(null)
 const editingProduct = ref(null)
 
-// Filter + sort computed
 const filtered = computed(() => {
   const list = store.products.filter(p =>
     p.name.toLowerCase().includes(search.value.toLowerCase())
   )
   return sortOption.value === 'qtyAsc'
-    ? list.sort((a,b) => a.quantity - b.quantity)
-    : list.sort((a,b) => b.quantity - a.quantity)
+    ? list.sort((a, b) => a.quantity - b.quantity)
+    : list.sort((a, b) => b.quantity - a.quantity)
 })
 
-// Modal openers
-function openDelete(p) {
-  deletingId.value = p.id
+function openDelete(id) {
+  deletingId.value = id
   showDelete.value = true
 }
 function openAdd() {
@@ -104,7 +101,6 @@ function openEdit(p) {
   showForm.value = true
 }
 
-// Modal callbacks
 function confirmDelete() {
   store.deleteProduct(deletingId.value)
   showDelete.value = false
@@ -112,10 +108,10 @@ function confirmDelete() {
 function submitForm(prod) {
   if (prod.id) {
     store.updateProduct(prod.id, {
-      name: prod.name,
-      price: prod.price,
+      name:     prod.name,
+      price:    prod.price,
       quantity: prod.quantity,
-      image: prod.image
+      image:    prod.image
     })
   } else {
     store.addProduct(prod)
@@ -157,6 +153,7 @@ function submitForm(prod) {
   justify-content: center;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  height: 33px;
 }
 .search-bar__icon ion-icon {
   font-size: 16px;

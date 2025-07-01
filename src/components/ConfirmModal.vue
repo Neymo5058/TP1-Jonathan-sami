@@ -16,18 +16,20 @@
 <script setup>
 defineProps({
   visible: { type: Boolean, required: true },
-  title:   { type: String,  default: 'Confirm' },
-  message: { type: String,  default: 'Are you sure?' }
-})
-defineEmits(['confirm','cancel'])
+  title: { type: String, default: 'Confirm' },
+  message: { type: String, default: 'Are you sure?' },
+});
+defineEmits(['confirm', 'cancel']);
 </script>
 
 <style scoped>
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +40,7 @@ defineEmits(['confirm','cancel'])
   border-radius: 6px;
   padding: 24px;
   width: 300px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 .modal-title {
@@ -58,6 +60,12 @@ defineEmits(['confirm','cancel'])
   border-radius: 4px;
   cursor: pointer;
 }
-.btn--danger { background: #F03E3E; color: white; }
-.btn--default { background: #e0e0e0; }
+.btn--danger {
+  background: #22c55e;
+  color: white;
+}
+.btn--default {
+  background: #f03e3e;
+  color: white;
+}
 </style>
