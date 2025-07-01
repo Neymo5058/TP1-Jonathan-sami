@@ -12,29 +12,34 @@ defineProps({ product: Object });
 defineEmits(['add-to-cart']);
 </script>
 
-<style scoped>
+<style>
 .product-card {
   width: 100%;
   height: 100%;
   background: #e9ecef;
   border-radius: 10px;
-  padding: 1rem;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: 'poppins', sans-serif;
   max-width: 20rem;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .product-card img {
-  width: 8rem;
+  width: 100%;
   height: auto;
-  max-height: 60%;
+  /* max-height: 60%; */
   object-fit: cover;
   border-radius: 6px;
   margin: 0 auto;
+}
+
+.product-card h4,
+.product-card p {
+  text-align: left;
+  color: #212529;
+  font-family: 'Poppins', sans-serif;
 }
 </style>

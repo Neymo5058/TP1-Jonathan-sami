@@ -12,10 +12,6 @@ body {
 /* RESPONSIVE */
 
 @media (max-width: 1024px) {
-  .main-container {
-    grid-template-columns: 1fr;
-  }
-
   .left-panel {
     margin-bottom: 2rem;
   }
@@ -111,6 +107,25 @@ body {
   .hero-content h3,
   .hero-content p {
     font-size: 0.5rem;
+  }
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .hero-section {
+    height: 45vh;
+  }
+  .product-card {
+    flex: 1 1 40%;
+    max-width: 45%;
   }
 }
 

@@ -14,7 +14,7 @@ import logo from '../assets/images/Fitwear-Logo3.png';
   </header>
 </template>
 
-<style scoped>
+<style>
 /* HEADER */
 .header-bar {
   display: flex;

@@ -15,7 +15,7 @@ defineProps({ products: Array });
 defineEmits(['add-to-cart']);
 </script>
 
-<style scoped>
+<style>
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

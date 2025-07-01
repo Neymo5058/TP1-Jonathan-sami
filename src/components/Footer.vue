@@ -3,7 +3,7 @@
 </template>
 <script setup></script>
 
-<style scoped>
+<style>
 .footer {
   text-align: center;
   align-content: center;
