@@ -40,6 +40,5 @@ defineEmits(['add-to-cart']);
 .product-card p {
   text-align: left;
   color: #212529;
-  font-family: 'Poppins', sans-serif;
 }
 </style>
