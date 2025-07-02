@@ -72,7 +72,6 @@ function confirmOrder() {
 
 <template>
   <div>
-    <Header />
     <HeroSection />
     <section class="main-container">
       <div class="left-panel">
@@ -104,7 +103,6 @@ function confirmOrder() {
         <ProductGrid :products="products" @add-to-cart="addToCart" />
       </div>
     </section>
-    <Footer />
   </div>
 </template>
 
