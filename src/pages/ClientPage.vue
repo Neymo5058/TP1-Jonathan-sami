@@ -1,111 +1,115 @@
 <script setup>
-import { ref } from 'vue';
-// Importing the picture
-import ArgentinaJersey from '@/assets/images/argentina-jersey.jpg';
-import RunningShorts from '@/assets/images/running-shorts.png';
-import RunningShoes from '@/assets/images/running-shoes.png';
-import Cap1 from '@/assets/images/cap2.jpg';
-import Bottle from '@/assets/images/bottle.jpg';
-import Cap2 from '@/assets/images/cap1.jpg';
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
-import HeroSection from '@/components/HeroSection.vue';
-import Cart from '@/components/Cart.vue';
-import ProductGrid from '@/components/ProductGrid.vue';
+import { computed, ref } from 'vue'
+import { useProductStore } from '../store/productStore.js'
+import { useCartStore }    from '../store/cartStore.js'
+import HeroSection         from '@/components/HeroSection.vue'
+import Cart                from '@/components/Cart.vue'
+import ProductGrid         from '@/components/ProductGrid.vue'
 
-const products = ref([
-  { id: 1, name: 'Argentina Jersey', price: 45.0, image: ArgentinaJersey },
-  { id: 2, name: 'Running Shorts', price: 25.0, image: RunningShorts },
-  { id: 3, name: 'Running Shoes', price: 120.0, image: RunningShoes },
-  { id: 4, name: 'Urban Cap', price: 40.0, image: Cap1 },
-  { id: 5, name: 'ProFit Bottle', price: 30.0, image: Bottle },
-  { id: 6, name: 'MTL Flex Cap', price: 45.0, image: Cap2 },
-]);
 
-const cart = ref([]);
-const showModal = ref(false);
+const productStore = useProductStore()
+const cartStore    = useCartStore()
+
+// Load products from the store
+const images = import.meta.glob(
+  '../assets/images/*.{jpg,jpeg,png,svg}',
+  { eager: true, query: '?url', import: 'default' }
+)
+
+
+
+const products = computed(() =>
+  productStore.products.map(p => ({
+    ...p,
+    image: images[`../assets/images/${p.image}`] || ''
+  }))
+)
+
+const cart = computed(() =>
+  
+  cartStore.cart.map(item => {
+    const prod = productStore.products.find(p => p.id === item.id) || {}
+    return {
+      ...item,
+      name:  prod.name,
+      price: prod.price,
+      image: images[`../assets/images/${prod.image}`] || ''
+    }
+  })
+)
+
 // Add to cart
 function addToCart(product) {
-  const existing = cart.value.find((p) => p.id === product.id);
-  if (existing) {
-    existing.quantity++;
-  } else {
-    cart.value.push({ ...product, quantity: 1 });
-  }
+  cartStore.addToCart(product)
 }
-// Remove from cart
 function removeFromCart(id) {
-  const index = cart.value.findIndex((item) => item.id === id);
-  if (index !== -1) {
-    if (cart.value[index].quantity > 1) {
-      cart.value[index].quantity--;
-    } else {
-      cart.value = cart.value.filter((item) => item.id !== id);
-    }
-  }
-}
-// calculate total
-function calculateTotal() {
-  const subtotal = cart.value.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const taxRate = 0.14975;
-  const taxes = subtotal * taxRate;
-  const total = subtotal + taxes;
-
-  return {
-    subtotal: subtotal.toFixed(2),
-    taxes: taxes.toFixed(2),
-    total: total.toFixed(2),
-  };
+  cartStore.removeFromCart(id)
 }
 
-// clean cart
+// Order modal
+const showModal = ref(false)
 function confirmOrder() {
-  if (cart.value.length === 0) {
-    showModal.value = false;
-    return;
+  if (cart.value.length) {
+    cartStore.clearCart()
   }
-
-  cart.value = [];
-  showModal.value = false;
+  showModal.value = false
 }
+
+//  Totals
+const subtotal = computed(() =>
+  cart.value.reduce((sum, i) => sum + i.price * i.quantity, 0)
+)
+const taxes = computed(() => +(subtotal.value * 0.14975).toFixed(2))
+const total = computed(() => +(subtotal.value + taxes.value).toFixed(2))
 </script>
 
 <template>
-  <div>
-    <HeroSection />
-    <section class="main-container">
-      <div class="left-panel">
-        <Cart :cart="cart" @remove-from-cart="removeFromCart" />
 
-        <div class="cart-summary" v-if="cart.length > 0">
-          <p>Sub-total : {{ calculateTotal().subtotal }}$</p>
-          <p>Taxes : {{ calculateTotal().taxes }}$</p>
-          <p>
-            <strong>Total : {{ calculateTotal().total }}$</strong>
-          </p>
-        </div>
-        <button class="process-btn" @click="showModal = true" :disabled="cart.length === 0">
-          <ion-icon name="card-outline"></ion-icon>
-          Process
-        </button>
-        <div class="modal-overlay" v-if="showModal">
-          <div class="modal">
-            <p>Are you sure you want to confirm the order?</p>
-            <div class="modal-actions">
-              <button class="yes-btn" @click="confirmOrder">Yes</button>
-              <button class="no-btn" @click="showModal = false">No</button>
-            </div>
+  <HeroSection />
+
+  <section class="main-container">
+    <div class="left-panel">
+      <Cart
+        :cart="cart"
+        @remove-from-cart="removeFromCart"
+      />
+
+      <div class="cart-summary" v-if="cart.length">
+        <p>Sub-total : {{ subtotal.toFixed(2) }}$</p>
+        <p>Taxes     : {{ taxes     }}$</p>
+        <p><strong>Total : {{ total   }}$</strong></p>
+      </div>
+
+      <button
+        class="process-btn"
+        @click="showModal = true"
+        :disabled="!cart.length"
+      >
+        <ion-icon name="card-outline"></ion-icon>
+        Process
+      </button>
+
+      <!-- confirmation modal -->
+      <div class="modal-overlay" v-if="showModal">
+        <div class="modal">
+          <p>Are you sure you want to confirm the order?</p>
+          <div class="modal-actions">
+            <button class="yes-btn" @click="confirmOrder">Yes</button>
+            <button class="no-btn"  @click="showModal = false">No</button>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="right-panel">
-        <ProductGrid :products="products" @add-to-cart="addToCart" />
-      </div>
-    </section>
-  </div>
+    <div class="right-panel">
+      <ProductGrid
+        :products="products"
+        @add-to-cart="addToCart"
+      />
+    </div>
+  </section>
+
 </template>
-
 <style>
 .main-container {
   display: grid;
