@@ -14,22 +14,23 @@ defineEmits(['add-to-cart']);
 
 <style>
 .product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   height: auto;
   background: #e9ecef;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   font-family: 'poppins', sans-serif;
   max-width: 20rem;
-  /* margin: 0 auto; */
+  gap: 0.5rem;
 }
 
 .product-card img {
   width: 100%;
   height: auto;
+  height: 20rem;
   /* max-height: 60%; */
   object-fit: cover;
   border-radius: 6px;
