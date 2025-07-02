@@ -1,42 +1,55 @@
-<script setup>
-import logo from '../assets/images/Fitwear-Logo3.png';
-</script>
-
 <template>
-  <header class="header-bar">
-    <div class="logo-container">
-      <img :src="logo" alt="Fitwear Logo" class="logo-img" />
+  <header class="header">
+    <div class="logo">
+      <img :src="logoUrl" alt="Fitwear Logo" class="header__logo" />
+      <span class="header__title">Fitwear</span>
     </div>
-    <nav class="navbar">
-      <a href="#" class="nav-link">Client</a>
-      <a href="#" class="nav-link">Admin</a>
+    <nav class="header__nav">
+      <router-link to="/client" class="header__link" exact>Client</router-link>
+      <span class="header__sep">›</span>
+      <router-link to="/admin" class="header__link">Admin</router-link>
     </nav>
   </header>
 </template>
 
-<style>
-/* HEADER */
-.header-bar {
+<script setup>
+// import statique du logo
+import logoUrl from '../assets/images/Fitwear-Logo3.png';
+</script>
+
+<style scoped>
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 2rem 2rem 0.5rem;
-  width: 100vw;
-  height: 2rem;
-  background: linear-gradient(to top, #f8f9fa, #dbe4ff);
+  background: #e9efff;
+  padding: 12px 24px;
 }
-.navbar {
+.logo {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 8px;
 }
-.nav-link {
-  text-decoration: none;
-  color: #333;
+.header__logo {
+  height: 32px;
+}
+.header__title {
+  font-size: 1.5rem;
   font-weight: bold;
-  font-family: 'Poppins', sans-serif;
+  color: #2a4aeb;
 }
-.logo-img {
-  height: 10rem;
-  width: 10rem;
+.header__nav {
+  font-weight: bold;
+}
+.header__link {
+  text-decoration: none;
+  color: #444;
+  margin: 0 8px;
+}
+.header__link.router-link-exact-active {
+  color: #2a4aeb;
+}
+.header__sep {
+  color: #888;
 }
 </style>
