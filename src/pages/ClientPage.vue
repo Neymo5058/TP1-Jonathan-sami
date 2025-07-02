@@ -2,8 +2,6 @@
 import { ref, computed } from 'vue';
 import { useProductStore } from '../store/productStore.js';
 import { useCartStore } from '../store/cartStore.js';
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
 import HeroSection from '@/components/HeroSection.vue';
 import Cart from '@/components/Cart.vue';
 import ProductGrid from '@/components/ProductGrid.vue';
