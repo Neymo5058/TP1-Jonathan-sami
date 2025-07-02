@@ -9,12 +9,7 @@
             <div class="search-bar__icon">
               <ion-icon name="search-outline"></ion-icon>
             </div>
-            <input
-              v-model="search"
-              type="text"
-              placeholder="Search..."
-              class="search-bar__input"
-            />
+            <input v-model="search" type="text" placeholder="Search..." class="search-bar__input" />
           </div>
 
           <button class="btn btn--primary" @click="openAdd">Add Product</button>
@@ -64,59 +59,59 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import ProductCardAdmin from '../components/ProductCardAdmin.vue'
-import ConfirmModal      from '../components/ConfirmModal.vue'
-import ProductFormModal  from '../components/ProductFormModal.vue'
-import { useProductStore } from '../store/productStore.js'
+import { ref, computed } from 'vue';
+import ProductCardAdmin from '../components/ProductCardAdmin.vue';
+import ConfirmModal from '../components/ConfirmModal.vue';
+import ProductFormModal from '../components/ProductFormModal.vue';
+import { useProductStore } from '../store/productStore.js';
 
-const store = useProductStore()
-const search = ref('')
-const sortOption = ref('qtyAsc')
+const store = useProductStore();
+const search = ref('');
+const sortOption = ref('qtyAsc');
 
-const showDelete = ref(false)
-const showForm = ref(false)
-const deletingId = ref(null)
-const editingProduct = ref(null)
+const showDelete = ref(false);
+const showForm = ref(false);
+const deletingId = ref(null);
+const editingProduct = ref(null);
 
 const filtered = computed(() => {
-  const list = store.products.filter(p =>
+  const list = store.products.filter((p) =>
     p.name.toLowerCase().includes(search.value.toLowerCase())
-  )
+  );
   return sortOption.value === 'qtyAsc'
     ? list.sort((a, b) => a.quantity - b.quantity)
-    : list.sort((a, b) => b.quantity - a.quantity)
-})
+    : list.sort((a, b) => b.quantity - a.quantity);
+});
 
 function openDelete(id) {
-  deletingId.value = id
-  showDelete.value = true
+  deletingId.value = id;
+  showDelete.value = true;
 }
 function openAdd() {
-  editingProduct.value = null
-  showForm.value = true
+  editingProduct.value = null;
+  showForm.value = true;
 }
 function openEdit(p) {
-  editingProduct.value = { ...p }
-  showForm.value = true
+  editingProduct.value = { ...p };
+  showForm.value = true;
 }
 
 function confirmDelete() {
-  store.deleteProduct(deletingId.value)
-  showDelete.value = false
+  store.deleteProduct(deletingId.value);
+  showDelete.value = false;
 }
 function submitForm(prod) {
   if (prod.id) {
     store.updateProduct(prod.id, {
-      name:     prod.name,
-      price:    prod.price,
+      name: prod.name,
+      price: prod.price,
       quantity: prod.quantity,
-      image:    prod.image
-    })
+      image: prod.image,
+    });
   } else {
-    store.addProduct(prod)
+    store.addProduct(prod);
   }
-  showForm.value = false
+  showForm.value = false;
 }
 </script>
 
@@ -126,7 +121,7 @@ function submitForm(prod) {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #E9ECEF;
+  background: #e9ecef;
 }
 .admin__main {
   flex: 1;
@@ -228,7 +223,8 @@ function submitForm(prod) {
     flex-direction: column;
     align-items: stretch;
   }
-  .btn, .sort-dropdown {
+  .btn,
+  .sort-dropdown {
     width: 100%;
   }
 }

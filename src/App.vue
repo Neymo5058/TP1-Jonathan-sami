@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <!-- Header commun à toutes les pages -->
   <Header />
@@ -10,6 +12,6 @@
 </template>
 
 <script setup>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 </script>

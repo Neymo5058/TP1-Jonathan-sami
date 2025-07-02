@@ -1,13 +1,10 @@
 <template>
-  <footer class="footer">
-    © 2025 Fitwear, Inc. All rights reserved.
-  </footer>
+  <footer class="footer">© 2025 Fitwear, Inc. All rights reserved.</footer>
 </template>
-<script setup>
-</script>
+<script setup></script>
 <style scoped>
 .footer {
-  background: #E9ECEF;
+  background: #e9ecef;
   border-top: 1px solid #ddd;
   text-align: center;
   padding: 16px 0;
