@@ -25,19 +25,18 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed } from 'vue';
 
-const props = defineProps({ product: Object })
-defineEmits(['edit','remove'])
+const props = defineProps({ product: Object });
+defineEmits(['edit', 'remove']);
 
 // Glob-import product images as URLs
-const images = import.meta.glob(
-  '../assets/images/*.{jpg,jpeg,png,svg}',
-  { eager: true, query: '?url', import: 'default' }
-)
-const imageUrl = computed(() =>
-  images[`../assets/images/${props.product.image}`] || ''
-)
+const images = import.meta.glob('../assets/images/*.{jpg,jpeg,png,svg}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+const imageUrl = computed(() => images[`../assets/images/${props.product.image}`] || '');
 </script>
 
 <style scoped>
@@ -48,7 +47,7 @@ const imageUrl = computed(() =>
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* make sure your images fill the top area */
@@ -87,11 +86,11 @@ const imageUrl = computed(() =>
 
 /* Edit icon in default blue */
 .icon--edit {
-  color: #2A4AEB;
+  color: #3b82f6;
 }
 
 /* Trash icon in exact red */
 .icon--trash {
-  color: #F03E3E;
+  color: #f03e3e;
 }
 </style>

@@ -38,7 +38,7 @@ import logoUrl from '../assets/images/Fitwear-Logo3.png';
 .header__title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2a4aeb;
+  color: #3b82f6;
 }
 .header__nav {
   font-weight: bold;
@@ -49,7 +49,7 @@ import logoUrl from '../assets/images/Fitwear-Logo3.png';
   margin: 0 8px;
 }
 .header__link.router-link-exact-active {
-  color: #2a4aeb;
+  color: #3b82f6;
 }
 .header__sep {
   color: #888;
