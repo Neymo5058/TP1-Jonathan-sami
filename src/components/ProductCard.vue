@@ -3,7 +3,7 @@
     <img :src="product.image" alt="product image" />
     <h4>{{ product.name }}</h4>
     <p>{{ product.price }}$</p>
-    <button @click="$emit('add-to-cart', product)">Add to Cart</button>
+    <button class="add-to-cart-btn" @click="$emit('add-to-cart', product)">Add to Cart</button>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ defineEmits(['add-to-cart']);
 <style>
 .product-card {
   width: 100%;
-  height: 100%;
+  height: auto;
   background: #e9ecef;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);

@@ -161,4 +161,23 @@ function confirmOrder() {
 .process-btn:hover {
   background-color: #218838;
 }
+
+.add-to-cart-btn {
+  background-color: #22c55e;
+  color: #f8f9fa;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  margin-left: auto;
+  /* text-align: left; */
+}
+
+.add-to-cart-btn:hover {
+  background-color: #218838;
+}
 </style>
