@@ -5,11 +5,7 @@
       <ion-icon name="cart-outline"></ion-icon>
     </h3>
 
-    <div 
-      v-for="item in cart" 
-      :key="item.id" 
-      class="cart-item"
-    >
+    <div v-for="item in cart" :key="item.id" class="cart-item">
       <!-- Trash icon to remove one unit / item -->
       <ion-icon
         name="trash-outline"
@@ -30,9 +26,9 @@
 <script setup>
 // Receive the cart items and emit remove events
 defineProps({
-  cart: { type: Array, required: true }
-})
-defineEmits(['remove-from-cart'])
+  cart: { type: Array, required: true },
+});
+defineEmits(['remove-from-cart']);
 </script>
 
 <style scoped>
@@ -41,7 +37,7 @@ defineEmits(['remove-from-cart'])
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .cart-container h3 {
@@ -54,7 +50,7 @@ defineEmits(['remove-from-cart'])
 .cart-container h3 ion-icon {
   margin-left: 8px;
   font-size: 1.2rem;
-  color: #2a4aeb;
+  color: #3b82f6;
 }
 
 .cart-item {
@@ -72,7 +68,7 @@ defineEmits(['remove-from-cart'])
 .trash-icon {
   cursor: pointer;
   font-size: 1.2rem;
-  color: #F03E3E;
+  color: #f03e3e;
   transition: transform 0.2s;
 }
 
