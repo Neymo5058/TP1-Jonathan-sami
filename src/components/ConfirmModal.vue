@@ -36,7 +36,7 @@ defineEmits(['confirm', 'cancel']);
   z-index: 1000;
 }
 .modal-window {
-  background: white;
+  background: #E9ECEF;
   border-radius: 6px;
   padding: 24px;
   width: 300px;

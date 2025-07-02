@@ -85,7 +85,7 @@ function onSubmit() {
   z-index: 1000;
 }
 .modal-window {
-  background: #D9D9D9;
+  background: #E9ECEF;
   border-radius: 6px;
   padding: 24px;
   width: 320px;

@@ -126,6 +126,7 @@ function submitForm(prod) {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background: #E9ECEF;
 }
 .admin__main {
   flex: 1;

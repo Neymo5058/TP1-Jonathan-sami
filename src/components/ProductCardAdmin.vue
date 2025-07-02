@@ -61,12 +61,12 @@ const imageUrl = computed(() =>
 
 .card-admin__info {
   padding: 12px;
-  text-align: center;
+  text-align: left;
 }
 
 .card-admin__actions {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   gap: 12px;
   padding: 8px;
   background: #fafafa;
