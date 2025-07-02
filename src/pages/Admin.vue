@@ -142,7 +142,7 @@ function submitForm(prod) {
   max-width: 300px;
 }
 .search-bar__icon {
-  background: #2a4aeb;
+  background: #3b82f6;
   padding: 0 12px;
   display: flex;
   align-items: center;
@@ -180,7 +180,7 @@ function submitForm(prod) {
   cursor: pointer;
 }
 .btn--primary {
-  background: #2a4aeb;
+  background: #3b82f6;
   color: white;
 }
 .sort-dropdown {

@@ -8,7 +8,7 @@
   border-top: 1px solid #ddd;
   text-align: center;
   padding: 16px 0;
-  color: #666;
+  color: #212529;
   margin-top: auto;
 }
 </style>

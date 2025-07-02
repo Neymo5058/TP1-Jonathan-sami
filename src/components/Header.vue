@@ -2,7 +2,6 @@
   <header class="header">
     <div class="logo">
       <img :src="logoUrl" alt="Fitwear Logo" class="header__logo" />
-      <span class="header__title">Fitwear</span>
     </div>
     <nav class="header__nav">
       <router-link to="/client" class="header__link" exact>Client</router-link>
@@ -24,19 +23,22 @@ import logoUrl from '../assets/images/Fitwear-Logo3.png';
   align-items: center;
   background: #e9efff;
   padding: 12px 24px;
+  width: 100vw;
 }
+
 .logo {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .header__logo {
   height: 32px;
 }
 .header__title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2a4aeb;
+  color: #3b82f6;
 }
 .header__nav {
   font-weight: bold;
@@ -47,7 +49,7 @@ import logoUrl from '../assets/images/Fitwear-Logo3.png';
   margin: 0 8px;
 }
 .header__link.router-link-exact-active {
-  color: #2a4aeb;
+  color: #3b82f6;
 }
 .header__sep {
   color: #888;
