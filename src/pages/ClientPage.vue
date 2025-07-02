@@ -127,7 +127,6 @@ function confirmOrder() {
   display: grid;
   gap: 0.5rem;
   background-color: #e9ecef;
-  font-family: 'Poppins', sans-serif;
 }
 
 .right-panel {
