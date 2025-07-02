@@ -1,7 +1,7 @@
 <template>
   <aside class="cart-container">
     <h3>
-      Cart Items 
+      Cart Items
       <ion-icon name="cart-outline"></ion-icon>
     </h3>
 
@@ -10,6 +10,7 @@
       :key="item.id" 
       class="cart-item"
     >
+      <!-- Trash icon to remove one unit / item -->
       <ion-icon
         name="trash-outline"
         class="trash-icon"
@@ -27,7 +28,7 @@
 </template>
 
 <script setup>
-// we only need to declare the prop and the emit
+// Receive the cart items and emit remove events
 defineProps({
   cart: { type: Array, required: true }
 })
