@@ -29,8 +29,8 @@ defineEmits(['add-to-cart']);
 
 .product-card img {
   width: 100%;
+  max-width: 20rem;
   height: auto;
-  height: 20rem;
   /* max-height: 60%; */
   object-fit: cover;
   border-radius: 6px;

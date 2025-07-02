@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 // Importing the picture
 import ArgentinaJersey from '@/assets/images/argentina-jersey.jpg';
 import RunningShorts from '@/assets/images/running-shorts.png';
@@ -6,12 +7,8 @@ import RunningShoes from '@/assets/images/running-shoes.png';
 import Cap1 from '@/assets/images/cap2.jpg';
 import Bottle from '@/assets/images/bottle.jpg';
 import Cap2 from '@/assets/images/cap1.jpg';
-//
-import { ref } from 'vue';
-
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
-
 import HeroSection from '@/components/HeroSection.vue';
 import Cart from '@/components/Cart.vue';
 import ProductGrid from '@/components/ProductGrid.vue';
@@ -43,7 +40,7 @@ function removeFromCart(id) {
     if (cart.value[index].quantity > 1) {
       cart.value[index].quantity--;
     } else {
-      cart.value.splice(index, 1);
+      cart.value = cart.value.filter((item) => item.id !== id);
     }
   }
 }
