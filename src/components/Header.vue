@@ -33,7 +33,6 @@ import logo from '../assets/images/Fitwear-Logo3.png';
   text-decoration: none;
   color: #333;
   font-weight: bold;
-  font-family: 'Poppins', sans-serif;
 }
 .logo-img {
   height: 10rem;

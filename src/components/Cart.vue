@@ -44,6 +44,5 @@ defineProps({ cart: Array });
 
 .item-text {
   font-size: 0.95rem;
-  font-family: 'Poppins', sans-serif;
 }
 </style>
