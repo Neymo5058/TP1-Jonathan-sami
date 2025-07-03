@@ -50,6 +50,7 @@ function removeFromCart(id) {
 
 // 6) Order modal
 const showModal = ref(false);
+
 function confirmOrder() {
   if (cart.value.length) cartStore.clearCart();
   showModal.value = false;

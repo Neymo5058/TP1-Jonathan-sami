@@ -90,6 +90,7 @@ body {
 @media (max-width: 500px) {
   .hero-section {
     height: 35vh;
+    width: 100vw;
   }
   .hero-content {
     text-align: left;
@@ -103,7 +104,7 @@ body {
 
   .hero-content h3,
   .hero-content p {
-    font-size: 0.5rem;
+    font-size: 0.4rem;
   }
 
   .main-container {
