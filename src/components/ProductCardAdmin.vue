@@ -80,7 +80,7 @@ const imageUrl = computed(() => images[`../assets/images/${props.product.image}`
 
 /* Base size for ion-icon */
 .icon {
-  font-size: 20px;
+  font-size: 30px;
   vertical-align: middle;
 }
 
@@ -93,4 +93,5 @@ const imageUrl = computed(() => images[`../assets/images/${props.product.image}`
 .icon--trash {
   color: #f03e3e;
 }
+
 </style>
