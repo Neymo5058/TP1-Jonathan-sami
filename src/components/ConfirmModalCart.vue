@@ -1,9 +1,10 @@
 <template>
   <teleport to="body">
-    <div v-if="visible" class="modal-overlay">
+    <div v-if="props.visible" class="modal-overlay">
       <div class="modal-window">
-        <h3 class="modal-title">{{ title }}</h3>
-        <p class="modal-message">{{ message }}</p>
+        <h3 class="modal-title">{{ props.title }}</h3>
+        <p class="modal-message">{{ props.message }}</p>
+
         <div class="modal-actions">
           <button class="btn btn--danger" @click="$emit('confirm')">Yes</button>
           <button class="btn btn--default" @click="$emit('cancel')">No</button>
@@ -14,11 +15,12 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   visible: { type: Boolean, required: true },
   title: { type: String, default: 'Confirm' },
   message: { type: String, default: 'Are you sure?' },
 });
+
 defineEmits(['confirm', 'cancel']);
 </script>
 

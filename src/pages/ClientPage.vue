@@ -5,6 +5,7 @@ import { useCartStore } from '../store/cartStore.js';
 import HeroSection from '@/components/HeroSection.vue';
 import Cart from '@/components/Cart.vue';
 import ProductGrid from '@/components/ProductGrid.vue';
+import ConfirmModalCart from '@/components/ConfirmModalCart.vue';
 
 // 1) Pinia stores
 const productStore = useProductStore();
@@ -81,15 +82,13 @@ const total = computed(() => +(subtotal.value + taxes.value).toFixed(2));
         Process
       </button>
 
-      <div class="modal-overlay" v-if="showModal">
-        <div class="modal">
-          <p>Are you sure you want to confirm the order?</p>
-          <div class="modal-actions">
-            <button class="yes-btn" @click="confirmOrder">Yes</button>
-            <button class="no-btn" @click="showModal = false">No</button>
-          </div>
-        </div>
-      </div>
+      <ConfirmModalCart
+        :visible="showModal"
+        title="Confirm Order"
+        message="Are you sure you want to confirm this order?"
+        @confirm="confirmOrder"
+        @cancel="showModal = false"
+      />
     </aside>
 
     <!-- right panel: product grid -->
