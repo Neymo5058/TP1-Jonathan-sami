@@ -21,6 +21,7 @@ import heroImage from '../assets/images/Hero.jpg';
   background-position: center top;
   background-repeat: no-repeat;
   overflow: hidden;
+  background-position: center calc(10%);
 }
 
 .hero-section::before {

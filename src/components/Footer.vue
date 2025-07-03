@@ -10,5 +10,6 @@
   padding: 16px 0;
   color: #212529;
   margin-top: auto;
+  width: 100vw;
 }
 </style>
