@@ -7,18 +7,18 @@ import Cart from '@/components/Cart.vue';
 import ProductGrid from '@/components/ProductGrid.vue';
 import ConfirmModalCart from '@/components/ConfirmModalCart.vue';
 
-// 1) Pinia stores
+// Pinia stores
 const productStore = useProductStore();
 const cartStore = useCartStore();
 
-// 2) Glob import your images as URLs
+//  Glob import your images as URLs
 const images = import.meta.glob('../assets/images/*.{jpg,jpeg,png,svg}', {
   eager: true,
   query: '?url',
   import: 'default',
 });
 
-// 3) Products computed just like Admin
+//  Products computed just like Admin
 const products = computed(() =>
   productStore.products.map((p) => ({
     ...p,
@@ -26,7 +26,7 @@ const products = computed(() =>
   }))
 );
 
-// 4) Cart computed: map `qty`→`quantity`
+//  Cart computed: map `qty`→`quantity`
 const cart = computed(() =>
   cartStore.cart.map((item) => {
     const prod = productStore.products.find((p) => p.id === item.id) || {};
@@ -40,7 +40,7 @@ const cart = computed(() =>
   })
 );
 
-// 5) Cart actions
+//  Cart actions
 function addToCart(product) {
   cartStore.addToCart(product);
 }
@@ -48,14 +48,14 @@ function removeFromCart(id) {
   cartStore.removeFromCart(id);
 }
 
-// 6) Order modal
+// Order modal
 const showModal = ref(false);
 function confirmOrder() {
   if (cart.value.length) cartStore.clearCart();
   showModal.value = false;
 }
 
-// 7) Totals
+//  Totals
 const subtotal = computed(() => cart.value.reduce((sum, i) => sum + i.price * i.quantity, 0));
 const taxes = computed(() => +(subtotal.value * 0.14975).toFixed(2));
 const total = computed(() => +(subtotal.value + taxes.value).toFixed(2));
