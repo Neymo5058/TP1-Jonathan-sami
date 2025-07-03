@@ -158,6 +158,7 @@ const total = computed(() => +(subtotal.value + taxes.value).toFixed(2));
   transition: background-color 0.3s ease;
   width: fit-content;
   margin-left: auto;
+  height: 1.5rem;
 }
 
 .add-to-cart-btn:hover {
