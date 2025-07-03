@@ -19,7 +19,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 5,
-        name: 'Running Shoe',
+        name: 'Running Shoes',
         price: 120,
         quantity: 10,
         image: 'vlad-ciutacu-tR2ZoPR4OPc-unsplash.jpg',

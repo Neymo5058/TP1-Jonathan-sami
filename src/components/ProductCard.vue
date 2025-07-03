@@ -20,7 +20,7 @@ defineEmits(['add-to-cart']);
   width: 100%;
   height: auto;
   background: #e9ecef;
-  border-radius: 10px;
+  border-radius: 0.6rem;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   max-width: 20rem;
   gap: 0.5rem;
@@ -31,6 +31,8 @@ defineEmits(['add-to-cart']);
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border-top-left-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
 }
 
 .product-card h4,
